@@ -183,26 +183,29 @@
     });
 
     function lsubmitForm() {
-        // initiate variables with form content
-		var name = $("#lname").val();
-		var phone = $("#lphone").val();
-		var email = $("#lemail").val();
-		var select = $("#lselect").val();
-        var terms = $("#lterms").val();
-        
-        $.ajax({
-            type: "POST",
-            url: "php/callmeform-process.php",
-            data: "name=" + name + "&phone=" + phone + "&email=" + email + "&select=" + select + "&terms=" + terms, 
-            success: function(text) {
-                if (text == "success") {
-                    lformSuccess();
-                } else {
-                    lformError();
-                    lsubmitMSG(false, text);
-                }
-            }
-        });
+        var settings = {
+		  "url": "https://wa.betaproject.in/api/Mail",
+		  "method": "POST",
+		  "timeout": 0,
+		  "headers": {
+			"name": $('#name').val(),
+			"email": $('#email').val(),
+			"subject": $('#name').val()+" inquiry from your website",
+			"mailfrom": $('#email').val(),
+			"mailto":'singhvibhuti@gmail.com',
+			"Content-Type": "text/plain"
+		  },
+		   "data": $('#message').val(),
+		};
+
+		$.ajax(settings).done(function (response) {
+          $('#myModal').modal('show');
+		  $('#name').val('');
+		  $('#email').val('');
+		  $('#subject').val('');
+		  $('#mailfrom').val('');
+		   $('#message').val('');
+		});
 	}
 
     function lformSuccess() {

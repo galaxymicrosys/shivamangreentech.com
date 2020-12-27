@@ -407,7 +407,7 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="form-control-submit-button">SUBMIT MESSAGE</button>
+                            <button type="submit" id="form-submit" class="form-control-submit-button">SUBMIT MESSAGE</button>
                         </div>
                         <div class="form-message">
                             <div id="cmsgSubmit" class="h3 text-center hidden"></div>
@@ -455,7 +455,26 @@
         </div> <!-- end of container -->
     </div> <!-- end of copyright --> 
     <!-- end of copyright -->
-    
+    <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            Shivaman Green Tech
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <p>Thanks for contacting us, we have received your message. we will get in touch with you shortly.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
     	
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
@@ -468,89 +487,7 @@
     <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
-	<script>
-
-$( document ).ready(function() {
-
-    $('#form-submit').on('click',function(){
-
-
-        $('#form-submit').text('Sending...');
-
-    if($('#name').val().length >0 
-    && $('#msg_subject').val().length>0
-    && $('#email').val().length>0
-    && $('#message').val().length>0)
-    {
-
-       if(checkEmail($('#email').val())){
-        var settings = {
-		  "url": "https://wa.betaproject.in/api/Mail",
-		  "method": "POST",
-		  "timeout": 0,
-		  "headers": {
-			"name": $('#name').val(),
-			"email": $('#email').val(),
-			"subject": $('#name').val()+" inquiry from your website",
-			"mailfrom": $('#email').val(),
-			"mailto":'singhvibhuti@gmail.com',
-			"Content-Type": "text/plain"
-		  },
-		   "data": $('#message').val(),
-		};
-
-		$.ajax(settings).done(function (response) {
-          $('#myModal').modal('show');
-		  $('#name').val('');
-		  $('#email').val('');
-		  $('#subject').val('');
-		  $('#mailfrom').val('');
-		   $('#message').val('');
-		});
-       }
-        
-    }else{
-
-        if(($('#name').val().length ==0))
-        $('#name').attr('style', "border-radius: 5px; border:#FF0000 1px solid;");
-
-        if(($('#msg_subject').val().length ==0))
-        $('#msg_subject').attr('style', "border-radius: 5px; border:#FF0000 1px solid;");
-
-        if(($('#email').val().length ==0))
-        {
-            checkEmail($('#email').val());
-            $('#email').attr('style', "border-radius: 5px; border:#FF0000 1px solid;");
-        }
-       
-
-        if(($('#message').val().length ==0))
-        $('#message').attr('style', "border-radius: 5px; border:#FF0000 1px solid;");
-        $('#myModal2').modal('show');
-        $('#form-submit').text('Send Message');
-    }
-
-      
-    });
-});
-function checkEmail(str)
-{
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(!re.test(str))
-    {
-        alert("Please enter a valid email address");
-        $('#email').attr('style', "border-radius: 5px; border:#FF0000 1px solid;");
-        return false;
-    }
-    else
-    {
-        $('#message').attr('style', "border-radius: 5px; border:green 1px solid;");
-        return true;
-    }
-        
-}
-
-    </script>
+	
     
 </body>
 </html>
