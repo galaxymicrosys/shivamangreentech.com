@@ -192,7 +192,7 @@
 			"email": $('#email').val(),
 			"subject": $('#name').val()+" inquiry from your website",
 			"mailfrom": $('#email').val(),
-			"mailto":'singhvibhuti@gmail.com',
+			"mailto":'info@shivamangreentech.com',
 			"Content-Type": "text/plain"
 		  },
 		   "data": $('#message').val(),
@@ -253,7 +253,7 @@
 			"email": $('#email').val(),
 			"subject": $('#name').val()+" inquiry from your website",
 			"mailfrom": $('#email').val(),
-			"mailto":'singhvibhuti@gmail.com',
+			"mailto":'info@shivamangreentech.com',
 			"Content-Type": "text/plain"
 		  },
 		   "data": $('#message').val(),
@@ -317,7 +317,7 @@
 			"email": $('#email').val(),
 			"subject": $('#name').val()+" inquiry from your website",
 			"mailfrom": $('#email').val(),
-			"mailto":'singhvibhuti@gmail.com',
+			"mailto":'info@shivamangreentech.com',
 			"Content-Type": "text/plain"
 		  },
 		   "data": $('#message').val(),
