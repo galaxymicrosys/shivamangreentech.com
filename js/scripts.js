@@ -267,8 +267,8 @@
 		  $('#mailfrom').val('');
 		   $('#message').val('');
 		});
-            }
-        });
+            
+       
 	}
 
     function cformSuccess() {
