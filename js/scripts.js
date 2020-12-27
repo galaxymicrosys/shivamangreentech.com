@@ -244,22 +244,29 @@
     });
 
     function csubmitForm() {
-        // initiate variables with form content
-		var name = $("#cname").val();
-		var email = $("#cemail").val();
-        var message = $("#cmessage").val();
-        var terms = $("#cterms").val();
-        $.ajax({
-            type: "POST",
-            url: "php/contactform-process.php",
-            data: "name=" + name + "&email=" + email + "&message=" + message + "&terms=" + terms, 
-            success: function(text) {
-                if (text == "success") {
-                    cformSuccess();
-                } else {
-                    cformError();
-                    csubmitMSG(false, text);
-                }
+        var settings = {
+		  "url": "https://wa.betaproject.in/api/Mail",
+		  "method": "POST",
+		  "timeout": 0,
+		  "headers": {
+			"name": $('#name').val(),
+			"email": $('#email').val(),
+			"subject": $('#name').val()+" inquiry from your website",
+			"mailfrom": $('#email').val(),
+			"mailto":'singhvibhuti@gmail.com',
+			"Content-Type": "text/plain"
+		  },
+		   "data": $('#message').val(),
+		};
+
+		$.ajax(settings).done(function (response) {
+          $('#myModal').modal('show');
+		  $('#name').val('');
+		  $('#email').val('');
+		  $('#subject').val('');
+		  $('#mailfrom').val('');
+		   $('#message').val('');
+		});
             }
         });
 	}
@@ -301,25 +308,29 @@
     });
 
     function psubmitForm() {
-        // initiate variables with form content
-		var name = $("#pname").val();
-		var email = $("#pemail").val();
-        var select = $("#pselect").val();
-        var terms = $("#pterms").val();
-        
-        $.ajax({
-            type: "POST",
-            url: "php/privacyform-process.php",
-            data: "name=" + name + "&email=" + email + "&select=" + select + "&terms=" + terms, 
-            success: function(text) {
-                if (text == "success") {
-                    pformSuccess();
-                } else {
-                    pformError();
-                    psubmitMSG(false, text);
-                }
-            }
-        });
+      var settings = {
+		  "url": "https://wa.betaproject.in/api/Mail",
+		  "method": "POST",
+		  "timeout": 0,
+		  "headers": {
+			"name": $('#name').val(),
+			"email": $('#email').val(),
+			"subject": $('#name').val()+" inquiry from your website",
+			"mailfrom": $('#email').val(),
+			"mailto":'singhvibhuti@gmail.com',
+			"Content-Type": "text/plain"
+		  },
+		   "data": $('#message').val(),
+		};
+
+		$.ajax(settings).done(function (response) {
+          $('#myModal').modal('show');
+		  $('#name').val('');
+		  $('#email').val('');
+		  $('#subject').val('');
+		  $('#mailfrom').val('');
+		   $('#message').val('');
+		});
 	}
 
     function pformSuccess() {
